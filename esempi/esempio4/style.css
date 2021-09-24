@@ -1,0 +1,44 @@
+#app-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px 50px;
+}
+
+.input-box {
+    margin-top: 10px;
+}
+
+.input-box {
+    border: none;
+    border-bottom: 2px solid gray;
+    outline: none;
+}
+
+.upper-part {
+    display: inherit;
+}
+
+.output-box {
+    text-align: center;
+    height: 6ex;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: #d8ebab;
+    width: calc(100vw - 2 * 50px - 100px);
+}
+
+.red-button {
+    text-align: center;
+    height: 6ex;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: red;
+    font-weight: bolder;
+    width: 100px;
+}
+

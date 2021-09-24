@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-react": "^7.14.5"
+  },
+  "scripts": {
+    "build": "babel --presets @babel/preset-react script.js --out-file transpiled_script.js"
+  }
+}

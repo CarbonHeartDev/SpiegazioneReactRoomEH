@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Hello React!</title>
+        <meta name="author" content="Emiliano Sandri" />
+
+        <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js" ></script>
+        <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" ></script>
+
+        <script>
+            function entrypoint() {
+                // Ottenere un riferimento ad un nodo del DOM
+                const reactRootNode = document.getElementById("root");
+                // Crea un componente React
+                const reactMainComponent = React.createElement("div", null, "Hello world!");
+                // Renderizzare il componente React nel nodo specificato
+                ReactDOM.render(
+                    reactMainComponent,
+                    reactRootNode
+                );
+            }
+        </script>
+    </head>
+
+    <body onload="entrypoint()">
+        <div id="root"></div>
+    </body>
+</html>

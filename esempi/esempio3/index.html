@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Hello React!</title>
+        <meta name="author" content="Emiliano Sandri" />
+
+        <script
+            crossorigin
+            src="https://unpkg.com/react@17/umd/react.development.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+        ></script>
+
+        <script>
+            // Altro esempio di componente funzionale React: prende in input un
+            // nome nel suo oggetto props e restituisce un div contenente la
+            // string "Hello [nome]!"
+            function Greeter(props) {
+                ({ name } = props);
+
+                return React.createElement("div", null, `Hello ${name}!`);
+            }
+            
+            // Le applicazioni React reali tendenzialmente partono da un singolo
+            // componente che va poi a diramarsi in sottocomponenti 
+            function App() {
+                
+                // Questo è un hook, un sistema creato da React per integrare logica 
+                // stateful in un qualcosa di tipicamente stateless come una funzione.
+                // Ci sono tanti hook ed è possibile creare degli hooks personalizzati,
+                // quello che vedere useState è il più semplice e permette di memorizzare
+                // uno stato (in forma di oggetto o primitiva JavaScript) o volgarmente una variabile 
+                // che si mantiene tra i vari rendering dello stesso componente
+                const [name, setName] = React.useState("");
+
+                // Creiemo una casella di testo interattiva, ogni volta che il suo valore
+                // cambia lo stato del componente (name) viene aggiornato e con esso tutti
+                // i componenti che lo usando come prop per il rendering
+                const handleNameUpdate = e => setName(e.target.value);
+                const nameField = React.createElement("input", {
+                    type: "text",
+                    onChange: handleNameUpdate,
+                });
+
+                // Questa istanza di "Greeter" usa name ( come input, ogni cambiamento di
+                // name porterà ad un rerendering del componente con il nuovo valore di name
+                const greeterInstance = React.createElement(
+                    Greeter,
+                    { name },
+                    null
+                );
+               
+                return React.createElement(
+                    "div",
+                    null,
+                    "Hi! What's your name? ",
+                    nameField,
+                    greeterInstance
+                );
+            }
+
+            function entrypoint() {
+                // Get a reference to a DOM node
+                const reactRootNode = document.getElementById("root");
+                // Create a React component
+                const reactMainComponent = React.createElement(App)
+                // Render the component in the node
+                ReactDOM.render(
+                    reactMainComponent,
+                    reactRootNode
+                );
+            }
+
+        </script>
+    </head>
+
+    <body onload="entrypoint()">
+        <div id="root"></div>
+    </body>
+</html>

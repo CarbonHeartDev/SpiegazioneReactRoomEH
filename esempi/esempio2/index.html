@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Hello React!</title>
+        <meta name="author" content="Emiliano Sandri" />
+
+        <script
+            crossorigin
+            src="https://unpkg.com/react@17/umd/react.development.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+        ></script>
+
+        <!-- Date/Time formatting library -->
+        <script
+            crossorigin
+            src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"
+        ></script>
+
+        <script>
+            // Creaiamo il nostro primo componente, un componente si presenta come una funzione che
+            // prende opzionalmente in input un oggetto proprietà (props) e restituisce un oggetto
+            // ReactElement, contenente la descrizione del componente per il rendering o in alternativa null
+            function Clock(props) {
+                const formattedDate = moment(props.date).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                );
+
+                return React.createElement("div", null, formattedDate);
+            }
+
+            function entrypoint() {
+                const reactRootNode = document.getElementById("root");
+                const reactMainComponent = React.createElement(
+                    Clock,
+                    { date: 2324324213312 },
+                    null
+                );
+                ReactDOM.render(reactMainComponent, reactRootNode);
+            }
+        </script>
+    </head>
+    <body onload="entrypoint()">
+        <div id="root"></div>
+    </body>
+</html>
